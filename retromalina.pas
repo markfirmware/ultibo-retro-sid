@@ -476,13 +476,15 @@ end;
 
 procedure TMouse.Execute;
 
-var mb:tmousedata;
-    i,j:integer;
-    mi:cardinal;
+var i,j:integer;
     x,y,w:integer;
     m:TMouseReport;
     mousexy,buttons,offsetx,offsety,wheel:integer;
     const mousecount:integer=0;
+{$ifdef DEBUG}
+var mb:tmousedata;
+    mi:cardinal;
+{$endif}
 
 begin
   repeat
@@ -799,7 +801,9 @@ procedure TRetro.Execute;
 
 // --- rev 21070111
 
+{$ifdef DEBUG}
 var id:integer;
+{$endif}
 
 begin
 ThreadSetCPU(ThreadGetCurrent,CPU_ID_3);
@@ -854,12 +858,14 @@ procedure initmachine;
 
 // -- rev 20170111
 
-var a,i,j,k:integer;
-    l,bb:byte;
-    fh2:integer;
+var i:integer;
+{$ifdef DEBUG}
+var fh2:integer;
     Entry:TPageTableEntry ;
     f: textfile;
-
+    a,k,j:integer;
+    l,bb:byte;
+{$endif}
 begin
 
 //dmactrl:=nocache+cardinal(GetAlignedMem(64,32));
@@ -1307,9 +1313,9 @@ end;
 
 
 procedure setpallette(pallette:TPallette; bank:integer);
-
+{$ifdef DEBUG}
 var fh:integer;
-
+{$endif}
 begin
 systempallette[bank]:=pallette;
 end;
@@ -1345,9 +1351,11 @@ procedure cls(c:integer);
 
 // --- rev 20170111
 
-var c2, i,l:integer;
+var i,l:integer;
     c3: cardinal;
-    screenstart:integer;
+{$ifdef DEBUG}
+var c2,screenstart:integer;
+{$endif}
 
 begin
 c:=c mod 256;
@@ -1624,8 +1632,11 @@ procedure putchar(x,y:integer;ch:char;col:integer);
 
 // --- TODO: translate to asm, use system variables
 // --- rev 20170111
-var i,j,start:integer;
+var i,j:integer;
   b:byte;
+{$ifdef DEBUG}
+var start:integer;
+{$endif}
 
 begin
 for i:=0 to 15 do

@@ -243,8 +243,9 @@ end;
 
 
 procedure InitAudioEx(range,t_length:integer);               //TODO don't init second time!!!
-
+{$ifdef DEBUG}
 var i:integer;
+{$endif}
 
 begin
 dmactrl_ptr:=GetAlignedMem(64,32);      // get 64 bytes for 2 DMA ctrl blocks
@@ -702,7 +703,9 @@ procedure TAudioThread.Execute;
 
 var
     i:integer;
+{$ifdef DEBUG}
     ns_size:integer;
+{$endif}
 
 begin
 AudioOn:=1;

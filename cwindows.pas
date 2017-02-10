@@ -412,8 +412,10 @@ function cwindow.checkmouse:boolean;
 
 label p999;
 
-var i,j,mmx,mmy,mx,my:integer;
-
+var mmx,mmy,mx,my:integer;
+{$ifdef DEBUG}
+var i,j:integer;
+{$endif}
 
 begin
 
@@ -452,8 +454,10 @@ function cmodalwindow.checkmouse:boolean;
 
 label p999;
 
-var i,j,mmx,mmy,mx,my:integer;
-
+var mmx,mmy,mx,my:integer;
+{$ifdef DEBUG}
+var i,j:integer;
+{$endif}
 
 begin
 mx:=dpeek($6002c)-64*peek($70002);
@@ -651,9 +655,11 @@ end;
 
 procedure cwindow.box3(ax,ay,al,ah,ac:integer);
 
- var a,i,j:integer;
+ var i,j:integer;
      adr:^integer;
-
+{$ifdef DEBUG}
+var a:integer;
+{$endif}
 
 begin
 adr:=foreground;
@@ -724,9 +730,12 @@ end;
 
 constructor cfselector.create(ax,ay,al,ah,alw,ahw,ac1,ac2:integer;atitle,adir,afn:string);
 
-var oldmode,i,ll,j:integer;
+var i,j:integer;
     s:string;
     d:char;
+{$ifdef DEBUG}
+var oldmode,ll:integer;
+{$endif}
 
 begin
 currentdir2:=adir;
@@ -1149,8 +1158,9 @@ end;
 
 
 procedure cbutton.highlight;
-
+{$ifdef DEBUG}
 var c:integer;
+{$endif}
 
 begin
 if visible and not highlighted then begin
@@ -1229,8 +1239,10 @@ end;
 
 procedure cbutton.select;
 
+var temp:cbutton;
+{$ifdef DEBUG}
 var c:integer;
-    temp:cbutton;
+{$endif}
 
 begin
 if visible and not selected then begin

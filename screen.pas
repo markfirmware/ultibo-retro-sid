@@ -498,7 +498,9 @@ end;
 procedure writebmp;
 
 var bmp_fh,i,j,k,idx:integer;
+{$ifdef DEBUG}
     b:byte;
+{$endif}
     s:string;
 
 begin
