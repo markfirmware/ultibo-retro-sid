@@ -243,7 +243,9 @@ var
     oldpc,ea,reladdr,value,aresult:word;
     opcode:byte;
     penaltyop,penaltyaddr:byte;
+{$ifdef DEBUG}
     csa,dsa,csi,dsi:integer;
+{$endif}
  //   cs,ds:^integer;
 
 

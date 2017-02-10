@@ -55,9 +55,10 @@ var s,currentdir,currentdir2:string;
     drive:string;
     key:integer;
     wheel:integer;
-    t,tt,ttt:int64;
-
+{$ifdef DEBUG}
+var t,tt,ttt:int64;
     mousedebug:boolean=false;
+{$endif}
 
 //    mp3test:pointer;
 //    mp3testi:cardinal absolute mp3test;
@@ -75,9 +76,12 @@ procedure waveopen (var fh:integer);
 
 label p999;
 
+{$ifdef DEBUG}
+var s:string;
+{$endif}
+
 var
     i,k:integer;
-    s:string;
     head_datasize:int64;
     samplenum:int64;
     currentdatasize:int64;
