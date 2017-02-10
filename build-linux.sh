@@ -1,5 +1,5 @@
 #!/bin/bash
-
+echo
 # build and test on linux
 
 function log {
