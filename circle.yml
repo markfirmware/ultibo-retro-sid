@@ -1,0 +1,17 @@
+version: 2
+executorType: docker
+containerInfo:
+  - image: markfirmware/ultibo-bash-v3
+stages:
+  build:
+    workDir: ~/ultibo-retro-sid
+    steps:
+      - type: checkout
+      - name: Build and test
+        type: shell
+        command: ./build-linux.sh
+        timeout: 60
+      - name: Save artifacts
+        type: artifacts-store
+        path: build-output
+        destination: ultibo-retro-sid
