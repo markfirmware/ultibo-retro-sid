@@ -90,7 +90,6 @@ function build-lpr {
     local CFG_NAME=$3
     local LPR_FOLDER=$4
     local PLATFORM_SYMBOL=$5
-    local INCLUDES=-Fi/root/ultibo/core/fpc/source/packages/fv/src
     log .... building $LPR_FILE
     rm -rf $LPR_FOLDER/obj && \
     mkdir -p $LPR_FOLDER/obj && \
@@ -106,7 +105,6 @@ function build-lpr {
      -FuSource \
      -Fugh/ultibohub/Asphyre/Source \
      -FE$LPR_FOLDER/obj \
-     $INCLUDES \
      $TARGET_COMPILER_OPTIONS \
      @/root/ultibo/core/fpc/bin/$CFG_NAME \
      $LPR_FILE |& tee -a $LOG && \
