@@ -47,12 +47,12 @@ then
         cd $APPVEYOR_BUILD_FOLDER
     fi
 
-#   du -sk /c/Ultibo
+    du -sk /c/Ultibo
 #   /usr/bin/mv /c/Ultibo/Core/fpc/3.1.1/source/packages/fv packages-fv
-#   rm -r /c/Ultibo/Core/fpc/3.1.1/source
+    rm -r /c/Ultibo/Core/fpc/3.1.1/source
 #   mkdir -p /c/Ultibo/Core/fpc/3.1.1/source/packages
 #   /usr/bin/mv packages-fv /c/Ultibo/Core/fpc/3.1.1/source/packages/fv
-#   du -sk /c/Ultibo
+    du -sk /c/Ultibo
 
     appveyor AddMessage "ultibo installation complete"
 fi
