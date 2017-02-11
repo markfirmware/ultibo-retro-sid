@@ -31,7 +31,7 @@ uses
   simpleaudio;
 
 
-label p101,p999;
+//label p101,p999;
 var
     s,currentdir,currentdir2:string;
     sr:tsearchrec;
@@ -49,14 +49,14 @@ var
     cia:integer;
     init:word;
     atitle,author,copyright:string[32];
-    workdir:string;
     pause1a:boolean=true;
     drivetable:array['A'..'Z'] of boolean;
 {$ifndef TARGET_QEMUARM7A}
+    workdir:string;
     c:char;
     f:textfile;
-{$endif}
     drive:string;
+{$endif}
     key:integer;
     wheel:integer;
 
@@ -70,7 +70,7 @@ label p999;
 
 var
     i,k:integer;
-    head_datasize:int64;
+//  head_datasize:int64;
     samplenum:int64;
     currentdatasize:int64;
 
@@ -85,7 +85,7 @@ if head.data<>1635017060 then
     begin
     head.data:=k;
     fileread(fh,k,4);
-    head.datasize:=k;
+//  head.datasize:=k;
     end
   else
     begin
@@ -117,7 +117,7 @@ outtextxyz(18,324,   'bytes per sample: '+inttostr(head.bytesps),188,2,2);
 outtextxyz(18,356,   'bits per sample:  '+inttostr(head.bps),188,2,2);
 outtextxyz(18,388,   'data size:        '+inttostr(head.datasize),188,2,2);
 
-head_datasize:=head.datasize ;
+//head_datasize:=head.datasize ;
 
 currentdatasize:=head.datasize;
 
@@ -369,10 +369,12 @@ if fileexists(drive+'kernel7_l.img') then
 for c:='C' to 'F' do drivetable[c]:=directoryexists(c+':\');
 {$endif}
 
-workdir:=drive;
 songtime:=0;
 siddelay:=20000;
+{$ifndef TARGET_QEMUARM7A}
+workdir:=drive;
 setcurrentdir(workdir);
+{$endif}
 
 initmachine;
 mousex:=960;
@@ -723,7 +725,9 @@ repeat
   until (mousek=3) or (key=key_escape) ;
   pauseaudio(1);
   if sfh>0 then fileclose(sfh);
+{$ifndef TARGET_QEMUARM7A}
   setcurrentdir(workdir);
+{$endif}
   stopmachine;
   systemrestart(0);
 

@@ -128,7 +128,7 @@ type cfselector=class(cwindow)
   sel,selstart,ilf,ild:integer;
   filenames:filedesc;
   constructor create(ax,ay,al,ah,alw,ahw,ac1,ac2:integer;atitle,adir,afn:string);
-  function checkmouse:boolean;
+  function checkmouse:boolean; override;
 
   end;
 
@@ -252,13 +252,14 @@ procedure cmodalwindow.drawdecoration;
 
 
 var
-    c3,c4,c5,c6,l2:integer;
+//  c3,c4,c5,c6,l2:integer;
+       c4,      l2:integer;
 
 begin
-c3:=c2+13;
+//c3:=c2+13;
 c4:=c2+10;
-c5:=c2+8;
-c6:=c2+6;
+//c5:=c2+8;
+//c6:=c2+6;
 
 
 retromalina.box(x,y,l,24,c4);
@@ -375,10 +376,11 @@ end;
 procedure cwindow.drawdecoration;
 
 var
-    c3,c4,c5,c6,l2:integer;
+//  c3,c4,c5,c6,l2:integer;
+       c4,c5,c6,l2:integer;
 
 begin
-c3:=c2+13;
+//c3:=c2+13;
 c4:=c2+10;
 c5:=c2+8;
 c6:=c2+6;

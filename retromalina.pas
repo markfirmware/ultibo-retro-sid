@@ -1730,9 +1730,11 @@ function sid(mode:integer):tsample;
 label p101,p102,p103,p104,p105,p106,p107;
 label p111,p112,p113,p114,p115,p116,p117;
 label p121,p122,p123,p124,p125,p126,p127;
-label p201,p202,p203,p204,p205,p206,p207,p208,p209;
+//label p201,p202,p203,p204,p205,p206,p207,p208,p209;
+  label p201,     p203,p204,p205,p206,p207,p208,p209;
 label p211,p212,p213,p214,p215,p216,p217,p218,p219;
-label p221,p222,p223,p224,p225,p226,p227,p228,p229,p297,p298,p299;
+//label p221,p222,p223,p224,p225,p226,p227,p228,p229,p297,p298,p299;
+  label p221,p222,p223,p224,p225,p226,p227,p228,p229,p297          ;
 const
       waveform1:word=0;
       f1:boolean=false;
