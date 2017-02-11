@@ -32,7 +32,8 @@ uses
 
 
 label p101,p999;
-var s,currentdir,currentdir2:string;
+var
+    s,currentdir,currentdir2:string;
     sr:tsearchrec;
     filenames:array[0..1000,0..1] of string;
     hh,mm,ss,l,i,j,ilf,ild:integer;
@@ -129,7 +130,8 @@ end;
 
 procedure sidopen (var fh:integer);
 
-var i:integer;
+var
+    i:integer;
     speed:cardinal;
     version,offset,load,startsong,flags:word;
     dump:word;
@@ -213,7 +215,8 @@ procedure sort;
 
 // A simple bubble sort for filenames
 
-var i,j:integer;
+var
+    i,j:integer;
     s,s2:string;
 
 begin
@@ -236,7 +239,8 @@ end;
 
 procedure dirlist(dir:string);
 
-var c:char;
+var
+    c:char;
 
 begin
 for c:='C' to 'F' do drivetable[c]:=directoryexists(c+':\');

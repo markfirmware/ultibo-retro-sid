@@ -238,7 +238,8 @@ type wavehead=packed record
      TSample32=array[0..1] of integer;
 
 
-var fh,filetype:integer;                // this needs cleaning...
+var
+    fh,filetype:integer;                // this needs cleaning...
     sfh:integer;                        // SID file handler
     play:word;
     p2:^integer;
@@ -468,7 +469,8 @@ end;
 
 procedure TMouse.Execute;
 
-var mb:tmousedata;
+var
+    mb:tmousedata;
     i:integer;
     mi:cardinal;
     x,y,w:integer;
@@ -567,7 +569,8 @@ const rptcnt:integer=0;
       clickcnt:integer=0;
       click:integer=0;
 
-var ch:TKeyboardReport;
+var
+    ch:TKeyboardReport;
     i:integer;
 
 begin
@@ -640,7 +643,8 @@ end;
 
 procedure TFileBuffer.Execute;
 
-var i:integer;
+var
+    i:integer;
 
 begin
 
@@ -686,7 +690,8 @@ end;
 
 function TFileBuffer.getdata(b,ii:integer):integer;
 
-var i,d:integer;
+var
+    i,d:integer;
 
 begin
 result:=0;
@@ -735,7 +740,8 @@ end;
 
 procedure TAudio.Execute;
 
-var a:integer;
+var
+    a:integer;
 
 
 begin
@@ -778,7 +784,8 @@ procedure TRetro.Execute;
 
 // --- rev 21070111
 
-var id:integer;
+var
+    id:integer;
 
 begin
 ThreadSetCPU(ThreadGetCurrent,CPU_ID_3);
@@ -839,7 +846,8 @@ procedure initmachine;
 
 // -- rev 20170111
 
-var a,i,j,k:integer;
+var
+    a,i,j,k:integer;
     l,bb:byte;
     fh2:integer;
     Entry:TPageTableEntry ;
@@ -940,7 +948,8 @@ procedure scrconvert(screen:pointer);
 
 // --- rev 21070111
 
-var a,b:integer;
+var
+    a,b:integer;
     e:integer;
 label p1,p0,p002,p10,p11,p12,p999;
 
@@ -1043,7 +1052,8 @@ procedure sprite(screen:pointer);
 // --- rev 21070111
 
 label p101,p102,p103,p104,p105,p106,p999,a7680,affff,affff0000,spritedata;
-var spritebase:integer;
+var
+    spritebase:integer;
 
 begin
 spritebase:=base+_spritebase;
@@ -1144,7 +1154,8 @@ end;
 
 procedure removeramlimits(addr:integer);
 
-var Entry:TPageTableEntry;
+var
+    Entry:TPageTableEntry;
 
 begin
 Entry:=PageTableGetEntry(addr);
@@ -1266,7 +1277,8 @@ procedure blit(from,x,y,too,x2,y2,length,lines,bpl1,bpl2:integer);
 // --- TODO - write in asm, add advanced blitting modes
 // --- rev 21070111
 
-var i,j:integer;
+var
+    i,j:integer;
     b1,b2:integer;
 
 begin
@@ -1288,7 +1300,8 @@ end;
 
 procedure setpallette(pallette:TPallette; bank:integer);
 
-var fh:integer;
+var
+    fh:integer;
 
 begin
 systempallette[bank]:=pallette;
@@ -1302,7 +1315,8 @@ end;
 
 procedure SetColor(c,color:cardinal);
 
-var bank:integer;
+var
+    bank:integer;
 
 begin
 bank:=c div 256; c:= c mod 256;
@@ -1325,7 +1339,8 @@ procedure cls(c:integer);
 
 // --- rev 20170111
 
-var c2, i,l:integer;
+var
+    c2, i,l:integer;
     c3: cardinal;
     screenstart:integer;
 
@@ -1346,7 +1361,8 @@ procedure putpixel(x,y,color:integer); inline;
 
 label p999;
 
-var adr:integer;
+var
+    adr:integer;
 
 begin
 if (x<0) or (x>=xres) or (y<0) or (y>yres) then goto p999;
@@ -1364,7 +1380,8 @@ end;
 
 function getpixel(x,y:integer):integer; inline;
 
-var adr:integer;
+var
+    adr:integer;
 
 begin
   if (x<0) or (x>=xres) or (y<0) or (y>yres) then result:=0
@@ -1387,7 +1404,8 @@ procedure box(x,y,l,h,c:integer);
 
 label p1,p999;
 
-var adr,i,j,screenptr,xr:integer;
+var
+    adr,i,j,screenptr,xr:integer;
 
 begin
 
@@ -1442,7 +1460,8 @@ end;
 
 procedure line2(x1,y1,x2,y2,c:integer);
 
-var d,dx,dy,ai,bi,xi,yi,x,y:integer;
+var
+    d,dx,dy,ai,bi,xi,yi,x,y:integer;
 
 begin
 x:=x1;
@@ -1521,7 +1540,8 @@ end;
 
 procedure circle(x0,y0,r,c:integer);
 
-var d,x,y,da,db:integer;
+var
+    d,x,y,da,db:integer;
 
 begin
 d:=5-4*r;
@@ -1560,7 +1580,8 @@ end;
 
 procedure fcircle(x0,y0,r,c:integer);
 
-var d,x,y,da,db:integer;
+var
+    d,x,y,da,db:integer;
 
 begin
 d:=5-4*r;
@@ -1604,7 +1625,8 @@ procedure putchar(x,y:integer;ch:char;col:integer);
 
 // --- TODO: translate to asm, use system variables
 // --- rev 20170111
-var i,j,start:integer;
+var
+    i,j,start:integer;
   b:byte;
 
 begin
@@ -1623,7 +1645,8 @@ procedure putcharz(x,y:integer;ch:char;col,xz,yz:integer);
 
 // --- TODO: translate to asm, use system variables
 
-var i,j,k,l:integer;
+var
+    i,j,k,l:integer;
   b:byte;
 
 begin
@@ -1642,7 +1665,8 @@ end;
 
 procedure outtextxy(x,y:integer; t:string;c:integer);
 
-var i:integer;
+var
+    i:integer;
 
 begin
 for i:=1 to length(t) do putchar(x+8*i-8,y,t[i],c);
@@ -1650,7 +1674,8 @@ end;
 
 procedure outtextxyz(x,y:integer; t:string;c,xz,yz:integer);
 
-var i:integer;
+var
+    i:integer;
 
 begin
 for i:=0 to length(t)-1 do putcharz(x+8*xz*i,y,t[i+1],c,xz,yz);
@@ -1658,7 +1683,8 @@ end;
 
 procedure outtextxys(x,y:integer; t:string;c,s:integer);
 
-var i:integer;
+var
+    i:integer;
 
 begin
 for i:=1 to length(t) do putchar(x+s*i-s,y,t[i],c);
@@ -1666,7 +1692,8 @@ end;
 
 procedure outtextxyzs(x,y:integer; t:string;c,xz,yz,s:integer);
 
-var i:integer;
+var
+    i:integer;
 
 begin
 for i:=0 to length(t)-1 do putcharz(x+s*xz*i,y,t[i+1],c,xz,yz);
@@ -1674,7 +1701,8 @@ end;
 
 procedure scrollup;
 
-var i:integer;
+var
+    i:integer;
 
 begin
   blit(displaystart,0,32,displaystart,0,0,xres,yres-32,xres,xres);
@@ -1684,7 +1712,8 @@ end;
 
 procedure print(line:string);
 
-var i:integer;
+var
+    i:integer;
 
 begin
 for i:=1 to length(line) do
@@ -1771,7 +1800,8 @@ const
 // 74..7F free
 
 
-var i,sid1,sid1l,ind:integer;
+var
+    i,sid1,sid1l,ind:integer;
     ttt:int64;
     pp1,pp2,pp3:byte;
     wv1ii,wv2ii,wv3ii:int64;
@@ -2776,7 +2806,8 @@ procedure AudioCallback(userdata: Pointer; stream: PUInt8; len:Integer );
 
 label p999;
 
-var audio2:psmallint;
+var
+    audio2:psmallint;
     audio3:psingle;
     s:tsample;
     ttt:int64;

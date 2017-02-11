@@ -9,7 +9,8 @@ type TFont=array[0..255,0..15] of byte;
      TAnimatedSprite=array[0..16383] of cardinal;
      TPallette=array[0..255] of cardinal;
 
-var dbtable:array[0..62] of integer=(
+var
+    dbtable:array[0..62] of integer=(
 
 4096,3651,3253,2900,2584,2303,2053,1830,1631,1453,
 1295,1154,1028, 917, 817, 728, 649, 579, 516, 460,
@@ -19,7 +20,8 @@ var dbtable:array[0..62] of integer=(
   12,  11,  10,   9,   8,   7,   6,   5,   4,   3,
   2,    1,   0);
 
-var combined:array[0..1023] of byte =(
+var
+    combined:array[0..1023] of byte =(
 
 $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $01,
 $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $07,

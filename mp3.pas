@@ -727,7 +727,8 @@ type mp3_info_t=record
 
 
 
-var mp3_info:mp3_info_t;
+var
+    mp3_info:mp3_info_t;
     isqrt2:integer;
     huff_vlc:array[0..15] of vlc_t;
     huff_quad_vlc:array [0..1] of vlc_t;
@@ -764,7 +765,8 @@ uses retromalina;
 
 procedure libc_memset(dest:pointer; value,count:integer); inline;
 
-var i:integer;
+var
+    i:integer;
 
 begin
 for i:=integer(dest) to integer(dest)+count-1  do poke(i,value);
@@ -772,7 +774,8 @@ end;
 
 procedure libc_memcpy(src,dest:pointer; count:integer); inline;
 
-var i:integer;
+var
+    i:integer;
 
 begin
 for i:=0 to count-1 do poke(integer(dest)+i, peek(integer(src)+i));
@@ -780,7 +783,8 @@ end;
 
 procedure libc_memmove(src,dest:pointer; count:integer);  inline;
 
-var i:integer;
+var
+    i:integer;
 
 begin
 for i:=0 to count-1 do poke(integer(dest)+i, peek(integer(src)+i));
@@ -793,7 +797,8 @@ end;
 
 function libc_frexp(x:double; var e:integer):double; inline;
 
-var d:double;
+var
+    d:double;
 
 begin
 frexp(x,d,e);
@@ -890,7 +895,8 @@ end;
 
 function mull(a,b:integer):integer;
 
-var i:int64;
+var
+    i:int64;
 
 begin
 i:=a;
@@ -901,7 +907,8 @@ end;
 
 function mulh(a,b:integer):integer;
 
-var i:int64;
+var
+    i:int64;
 
 begin
 i:=a;

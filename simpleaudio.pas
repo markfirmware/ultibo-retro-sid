@@ -169,7 +169,8 @@ const nocache=$C0000000;              // constant to disable GPU L2 Cache
       dma_chn= 14;                   // use DMA channel 14 (the last)
 
 
-var       gpfsel4:cardinal     absolute _gpfsel4;      // GPIO Function Select 4
+var
+          gpfsel4:cardinal     absolute _gpfsel4;      // GPIO Function Select 4
           pwmclk:cardinal      absolute _pwmclk;       // PWM Clock ctrl
           pwmclk_div: cardinal absolute _pwmclk_div;   // PWM Clock divisor
           pwm_ctl:cardinal     absolute _pwm_ctl;      // PWM Control Register
@@ -229,7 +230,8 @@ function noiseshaper8(bufaddr,outbuf,oversample,len:integer):integer; forward;
 
 procedure removeramlimits(addr:integer);
 
-var Entry:TPageTableEntry;
+var
+    Entry:TPageTableEntry;
 
 begin
 Entry:=PageTableGetEntry(addr);
@@ -244,7 +246,8 @@ end;
 
 procedure InitAudioEx(range,t_length:integer);               //TODO don't init second time!!!
 
-var i:integer;
+var
+    i:integer;
 
 begin
 dmactrl_ptr:=GetAlignedMem(64,32);      // get 64 bytes for 2 DMA ctrl blocks
@@ -343,7 +346,8 @@ end;
 
 function OpenAudio(desired, obtained: PAudioSpec): Integer;
 
-var maxsize:double;
+var
+    maxsize:double;
     over_freq:integer;
 
 begin
@@ -458,7 +462,8 @@ end;
 
 function ChangeAudioParams(desired, obtained: PAudioSpec): Integer;
 
-var maxsize:double;
+var
+    maxsize:double;
     over_freq:integer;
 
 begin

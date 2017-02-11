@@ -177,10 +177,10 @@ const
  KEYBOARD_LOG_LEVEL_ERROR     = LOG_LEVEL_ERROR;  {Keyboard error messages}
  KEYBOARD_LOG_LEVEL_NONE      = LOG_LEVEL_NONE;   {No Keyboard messages}
 
-var 
+var
  KEYBOARD_DEFAULT_LOG_LEVEL:LongWord = KEYBOARD_LOG_LEVEL_DEBUG; {Minimum level for Keyboard messages.  Only messages with level greater than or equal to this will be printed}
  
-var 
+var
  {Keyboard logging}
  KEYBOARD_LOG_ENABLED:Boolean; 
  
@@ -699,7 +699,8 @@ function USBKeyboardDeviceSetProtocol(Keyboard:PUSBKeyboardDevice;Protocol:Byte)
 
 type TKeyboardreport=array[0..7] of byte;
 
-var report_buffer: array[0..512] of byte;
+var
+    report_buffer: array[0..512] of byte;
     rb_start:integer=0;
     rb_end:integer=0;
     report_buffer_active:boolean=false;
@@ -726,7 +727,8 @@ end;
 
 function getkeyboardreport:TKeyboardreport;
 
-var ii:integer;
+var
+    ii:integer;
 
 begin
 if rb_end <>rb_start then begin

@@ -17,7 +17,8 @@ const ver='The retromachine player v. 0.21u --- 2017.02.05';
 
 type bmppixel=array[0..2] of byte;
 
-var test:integer ;
+var
+    test:integer ;
     licznik:integer=0;
     songname:string;
     q1,q2,q3:extended;
@@ -98,7 +99,8 @@ end;
 
 procedure initscreen;
 
-var i:integer;
+var
+    i:integer;
     b:byte;
     c:cardinal;
     a:array[0..3] of byte absolute c;
@@ -258,7 +260,8 @@ end;
 
 procedure refreshscreen;
 
-var v,a,aaa,c1,ii,i,cc:integer;
+var
+    v,a,aaa,c1,ii,i,cc:integer;
     mm,hh,ss:int64;
     mms,hhs,sss:string;
     clock:string;
@@ -493,7 +496,8 @@ end;
 
 procedure writebmp;
 
-var fh,i,j,k,idx:integer;
+var
+    fh,i,j,k,idx:integer;
     b:byte;
 
 begin
@@ -525,7 +529,8 @@ const cxmin = -2.5;
       maxiteration = 255;
       escaperadius = 2;
 
-var  ixmax  :Word;
+var
+     ixmax  :Word;
      iymax  :Word;
      ix, iy      :Word;
      cx, cy       :real;

@@ -227,7 +227,8 @@ end;
 
 procedure cmodalwindow.show;
 
-var i,j,k:integer;
+var
+    i,j,k:integer;
     p:^integer;
 
 begin
@@ -250,7 +251,8 @@ procedure cmodalwindow.drawdecoration;
 
 
 
-var c3,c4,c5,c6,l2:integer;
+var
+    c3,c4,c5,c6,l2:integer;
 
 begin
 c3:=c2+13;
@@ -271,7 +273,8 @@ end;
 
 procedure cmodalwindow.redrawclient;
 
-var i,j:integer;
+var
+    i,j:integer;
     p:^integer;
 
 begin
@@ -317,7 +320,8 @@ end;
 
 procedure cwindow.show;
 
-var i,j,k:integer;
+var
+    i,j,k:integer;
     p:^integer;
 
 begin
@@ -338,7 +342,8 @@ end;
 
 procedure cwindow.hide;
 
-var i,j,k:integer;
+var
+    i,j,k:integer;
     p:^integer;
 
 begin
@@ -369,7 +374,8 @@ end;
 
 procedure cwindow.drawdecoration;
 
-var c3,c4,c5,c6,l2:integer;
+var
+    c3,c4,c5,c6,l2:integer;
 
 begin
 c3:=c2+13;
@@ -397,7 +403,8 @@ end;
 
 procedure cwindow.redrawclient;
 
-var i,j:integer;
+var
+    i,j:integer;
     p:^integer;
 
 begin
@@ -412,7 +419,8 @@ function cwindow.checkmouse:boolean;
 
 label p999;
 
-var i,j,mmx,mmy,mx,my:integer;
+var
+    i,j,mmx,mmy,mx,my:integer;
 
 
 begin
@@ -452,7 +460,8 @@ function cmodalwindow.checkmouse:boolean;
 
 label p999;
 
-var i,j,mmx,mmy,mx,my:integer;
+var
+    i,j,mmx,mmy,mx,my:integer;
 
 
 begin
@@ -481,7 +490,8 @@ end;
 
 procedure cwindow.cls;
 
-var p:^integer;
+var
+    p:^integer;
     i,j:integer;
 
 begin
@@ -494,7 +504,8 @@ end;
 
 procedure cwindow.putpixel(ax,ay,c:integer);
 
-var p:^integer;
+var
+    p:^integer;
 
 begin
 p:=foreground;
@@ -507,7 +518,8 @@ end;
 
 procedure cwindow.putpixel2(ax,ay,c:integer);
 
-var p:^integer;
+var
+    p:^integer;
 
 begin
 p:=foreground;
@@ -516,7 +528,8 @@ end;
 
 procedure cwindow.line(ax,ay,al,ah,c:integer);
 
-var dx,dy,xa,ya:double;
+var
+    dx,dy,xa,ya:double;
 i:integer;
 
 begin
@@ -564,7 +577,8 @@ end;
 
 procedure cwindow.line2(x1,y1,x2,y2,c:integer);
 
-var al,ah:integer;
+var
+    al,ah:integer;
 
 begin
 al:=x2-x1;
@@ -575,7 +589,8 @@ end;
 
 procedure cwindow.putchar2(ax,ay:integer;ch:char;col:integer);
 
-var i,j,start:integer;
+var
+    i,j,start:integer;
   b:byte;
 
 begin
@@ -602,7 +617,8 @@ end;
 
 procedure cwindow.outtextxy(ax,ay:integer; t:string;c:integer);
 
-var i:integer;
+var
+    i:integer;
 
 begin
 for i:=1 to length(t) do putchar2(ax+8*i-8,ay,t[i],c);
@@ -614,7 +630,8 @@ procedure cwindow.putcharz2(ax,ay:integer;ch:char;col,xz,yz:integer);
 
 // --- TODO: translate to asm, use system variables
 
-var i,j,k,al,start:integer;
+var
+    i,j,k,al,start:integer;
   b:byte;
 
 begin
@@ -641,7 +658,8 @@ end;
 
 procedure cwindow.outtextxyz(ax,ay:integer; t:string;c,xz,yz:integer);
 
-var i:integer;
+var
+    i:integer;
 
 begin
 for i:=0 to length(t)-1 do putcharz(ax+8*xz*i,ay,t[i+1],c,xz,yz);
@@ -651,7 +669,8 @@ end;
 
 procedure cwindow.box3(ax,ay,al,ah,ac:integer);
 
- var a,i,j:integer;
+ var
+    a,i,j:integer;
      adr:^integer;
 
 
@@ -693,7 +712,8 @@ end;
 
 procedure cwindow.winblit(x1,y1,x2,y2,length,lines:integer);
 
-var adr1,adr2,i,j:integer;
+var
+    adr1,adr2,i,j:integer;
     p:^integer;
 
 begin
@@ -724,7 +744,8 @@ end;
 
 constructor cfselector.create(ax,ay,al,ah,alw,ahw,ac1,ac2:integer;atitle,adir,afn:string);
 
-var oldmode,i,ll,j:integer;
+var
+    oldmode,i,ll,j:integer;
     s:string;
     d:char;
 
@@ -819,7 +840,8 @@ function cfselector.checkmouse:boolean;
 
 label p999;
 
-var mmx,mmy,mx,my,i,j,ll:integer;
+var
+    mmx,mmy,mx,my,i,j,ll:integer;
     s:string;
     d:char;
     key,wheel:integer;
@@ -1125,7 +1147,8 @@ end;
 
 function cbutton.findselected:cbutton;
 
-var temp:cbutton;
+var
+    temp:cbutton;
 
 begin
 temp:=self.gofirst;
@@ -1139,7 +1162,8 @@ end;
 
 function cbutton.checkmouse:boolean;
 
-var mx,my:integer;
+var
+    mx,my:integer;
 
 begin
 mx:=dpeek($6002c)-64*peek($70002);
@@ -1150,7 +1174,8 @@ end;
 
 procedure cbutton.highlight;
 
-var c:integer;
+var
+    c:integer;
 
 begin
 if visible and not highlighted then begin
@@ -1173,7 +1198,8 @@ end;
 
 procedure cbutton.draw;
 
-var l2,a:integer;
+var
+    l2,a:integer;
 
 begin
 if selected then a:=-2 else a:=2;
@@ -1189,7 +1215,8 @@ end;
 
 procedure cbutton.show;
 
-var i,j,k:integer;
+var
+    i,j,k:integer;
     p:^integer;
 
 begin
@@ -1209,7 +1236,8 @@ end;
 
 procedure cbutton.hide;
 
-var i,j,k:integer;
+var
+    i,j,k:integer;
     p:^integer;
 
 begin
@@ -1229,7 +1257,8 @@ end;
 
 procedure cbutton.select;
 
-var c:integer;
+var
+    c:integer;
     temp:cbutton;
 
 begin

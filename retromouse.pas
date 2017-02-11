@@ -136,10 +136,10 @@ const
  MOUSE_LOG_LEVEL_ERROR     = LOG_LEVEL_ERROR;  {Mouse error messages}
  MOUSE_LOG_LEVEL_NONE      = LOG_LEVEL_NONE;   {No Mouse messages}
 
-var 
+var
  MOUSE_DEFAULT_LOG_LEVEL:LongWord = MOUSE_LOG_LEVEL_DEBUG; {Minimum level for Mouse messages.  Only messages with level greater than or equal to this will be printed}
  
-var 
+var
  {Mouse logging}
  MOUSE_LOG_ENABLED:Boolean;
 
@@ -339,7 +339,8 @@ function USBMouseDeviceSetProtocol(Mouse:PUSBMouseDevice;Protocol:Byte):LongWord
 
 type TMousereport=array[0..7] of byte;
 
-var mouse_report_buffer: array[0..1023] of byte;
+var
+    mouse_report_buffer: array[0..1023] of byte;
     mouse_rb_start:integer=0;
     mouse_rb_end:integer=0;
     mouse_report_buffer_active:boolean=false;
@@ -366,7 +367,8 @@ end;
 
 function getmousereport:Tmousereport;
 
-var ii:integer;
+var
+    ii:integer;
 
 begin
 if mouse_rb_end <>mouse_rb_start then begin
@@ -1395,7 +1397,8 @@ end;
 
 procedure USBMouseReportWorker(Request:PUSBRequest); 
 
-var Buffer:Pointer;
+var
+    Buffer:Pointer;
     Status:LongWord;
     Message:TMessage;
     Mouse:PUSBMouseDevice;

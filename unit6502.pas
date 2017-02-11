@@ -9,7 +9,8 @@ uses Classes, SysUtils;
 
 //var ram:array[-2..65537] of byte;
 
-var instructions:integer=0;      //keep track of total instructions executed
+var
+    instructions:integer=0;      //keep track of total instructions executed
     clockticks6502:integer=0;
     clockgoal6502:integer=0;
     jsrcnt:integer=0;
@@ -146,7 +147,8 @@ type
 Taddr=procedure;
 TOpcode=procedure;
 
-var addrtable:array[0..255] of TAddr=(
+var
+  addrtable:array[0..255] of TAddr=(
 //        |  0   |  1   |  2   |  3   |  4   |  5   |  6   |  7   |  8   |  9   |  A   |  B   |  C   |  D   |  E   |  F  |
 {  0  }     @imp, @indx, @abso, @indx,   @zp,   @zp,   @zp,   @zp,  @imp,  @imm,  @acc,  @imm, @abso, @abso, @abso, @abso, {  0  }
 {  1  }     @rel, @indy,  @izp, @indy,   @zp,  @zpx,  @zpx,  @zpx,  @imp, @absy,  @acc, @absy, @abso, @absx, @absx, @absx, {  1  }
@@ -166,7 +168,8 @@ var addrtable:array[0..255] of TAddr=(
 {  F  }     @rel, @indy,  @izp, @indy,  @zpx,  @zpx,  @zpx,  @zpx,  @imp, @absy,  @imp, @absy, @absx, @absx, @absx, @absx  {  F  }
 );
 
-var optable:array[0..255] of TOpcode=(
+var
+  optable:array[0..255] of TOpcode=(
 //         |  0   |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   A  |   B  |   C  |   D  |   E  |   F  |
 {  0  }      @brk,  @ora,  @ldc,  @slo,  @tsb,  @ora,  @asl,  @slo,  @php,  @ora,  @asl,  @nop,  @tsb,  @ora,  @asl,  @slo, {  0  }
 {  1  }      @bpl,  @ora,  @ora,  @slo,  @trb,  @ora,  @asl,  @slo,  @clc,  @ora,  @ina,  @slo,  @trb,  @ora,  @asl,  @slo, {  1  }
@@ -186,7 +189,8 @@ var optable:array[0..255] of TOpcode=(
 {  F  }      @beq,  @sbc,  @sbc,  @isb,  @nop,  @sbc,  @ina,  @isb,  @sed,  @sbc,  @plx,  @isb,  @nop,  @sbc,  @ina,  @isb  {  F  }
 );
 
-var ticktable:array[0..255] of byte = (
+var
+  ticktable:array[0..255] of byte = (
 {         |  0  |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  A  |  B  |  C  |  D  |  E  |  F  |      }
 {  0  }      7,    6,    7,    8,    5,    3,    5,    5,    3,    2,    2,    2,    6,    4,    6,    6,  {  0  }
 {  1  }      2,    5,    5,    8,    5,    4,    6,    6,    2,    4,    2,    7,    6,    4,    7,    7,  {  1  }
@@ -233,8 +237,9 @@ var ticktable:array[0..255] of byte = (
 
 //6502 CPU registers
 
-var pc:word;
-var sp,a,x,y,status:byte;
+var
+  pc:word;
+  sp,a,x,y,status:byte;
 
 
 //helper variables
@@ -290,7 +295,8 @@ end;
 
 function pull32:cardinal;
 
-var temp32:cardinal;
+var
+  temp32:cardinal;
 
 begin
 temp32:=read6502(BASE_STACK + ((sp + 4) and $FF));
@@ -303,7 +309,8 @@ end;
 
 function pull16:word;
 
-var temp16:word;
+var
+  temp16:word;
 
 begin
 temp16:=read6502(BASE_STACK + ((sp + 2) and $FF));
@@ -321,7 +328,8 @@ end;
 
 function getvalue:word;
 
-var ea2:integer;
+var
+  ea2:integer;
 
 begin
 ea2:=ea;
@@ -333,7 +341,8 @@ end;
 
 function getvalue16:word;
 
-var ea2:integer;
+var
+  ea2:integer;
 
 begin
 ea2:=ea;
@@ -342,7 +351,8 @@ end;
 
 function getvalue32:cardinal;
 
-var ea2:integer;
+var
+  ea2:integer;
 
 begin
 
@@ -356,7 +366,8 @@ end;
 
 procedure putvalue(saveval:word);
 
-var ea2:integer;
+var
+  ea2:integer;
 
 begin
 ea2:=ea;
@@ -365,7 +376,8 @@ end;
 
 procedure putvalue32(saveval:cardinal);
 
-var ea2:integer;
+var
+  ea2:integer;
 
 begin
 
@@ -470,7 +482,8 @@ end;
 
 procedure jsr6502(aa:word; addr:integer);
 
-var depth:integer;
+var
+  depth:integer;
 
 begin
 inc(jsrcnt) ;
@@ -554,7 +567,8 @@ end;
 
 procedure absx;  //absolute,X
 
-var startpage:word;
+var
+  startpage:word;
 
 begin
 ea := word(read6502(pc)) or (word(read6502(pc+1)) shl 8);
@@ -566,7 +580,8 @@ end;
 
 procedure absy;  //absolute,Y
 
-var startpage:word;
+var
+  startpage:word;
 
 begin
 ea := word(read6502(pc)) or (word(read6502(pc+1)) shl 8);
@@ -578,7 +593,8 @@ end;
 
 procedure ind;  //indirect
 
-var eahelp, eahelp2:word;
+var
+  eahelp, eahelp2:word;
 
 begin
 eahelp := word(read6502(pc)) or (word(read6502(pc+1)) shl 8);
@@ -589,7 +605,8 @@ end;
 
 procedure izp;  // (indirect,zp)
 
-var eahelp:word;
+var
+  eahelp:word;
 
 begin
 eahelp := word(read6502(pc)) and $FF; //zero-page wraparound for table pointer
@@ -600,7 +617,8 @@ end;
 
 procedure indx;  // (indirect,zp,X)
 
-var eahelp:word;
+var
+  eahelp:word;
 
 begin
 eahelp := (word(read6502(pc) + x) and $FF); //zero-page wraparound for table pointer
@@ -610,7 +628,8 @@ end;
 
 procedure iax;  // (indirect,X)
 
-var eahelp:word;
+var
+  eahelp:word;
 
 begin
 eahelp := word(read6502(pc))+(word(read6502(pc+1) shl 8)+ y); //zero-page wraparound for table pointer
@@ -620,7 +639,8 @@ end;
 
 procedure indy; // (indirect),zp,Y
 
-var eahelp, eahelp2, startpage: word;
+var
+  eahelp, eahelp2, startpage: word;
 
 begin
 eahelp := word(read6502(pc));
