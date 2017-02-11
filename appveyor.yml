@@ -2,7 +2,7 @@ install:
   - bash -c scripts/appveyor-install-ultibo-1.3.077.sh
   - bash -c scripts/appveyor-install-imagemagick.tool.sh
 build_script:
-  - echo bash -c ./build-appveyor.sh
+  - echo ... bash -c ./build-appveyor.sh
 cache:
   - c:/Ultibo -> scripts/appveyor-install-ultibo-1.3.077.sh
   - c:/ProgramData/chocolatey/lib/imagemagick.tool -> scripts/appveyor-install-imagemagick.tool.sh
