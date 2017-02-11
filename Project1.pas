@@ -54,7 +54,7 @@ var
     drive:string;
     key:integer;
     wheel:integer;
-    t,tt,ttt:int64;
+var t,tt,ttt:int64;
 
     mousedebug:boolean=false;
 
@@ -66,7 +66,7 @@ label p999;
 
 var
     i,k:integer;
-    s:string;
+var s:string;
     head_datasize:int64;
     samplenum:int64;
     currentdatasize:int64;

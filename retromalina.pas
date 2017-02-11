@@ -469,10 +469,10 @@ end;
 
 procedure TMouse.Execute;
 
+var mb:tmousedata;
+var i:integer;
+var mi:cardinal;
 var
-    mb:tmousedata;
-    i:integer;
-    mi:cardinal;
     x,y,w:integer;
     m:TMouseReport;
     mousexy,buttons,offsetx,offsety,wheel:integer;
@@ -784,8 +784,7 @@ procedure TRetro.Execute;
 
 // --- rev 21070111
 
-var
-    id:integer;
+var id:integer;
 
 begin
 ThreadSetCPU(ThreadGetCurrent,CPU_ID_3);
@@ -846,12 +845,11 @@ procedure initmachine;
 
 // -- rev 20170111
 
-var
-    a,i,j,k:integer;
-    l,bb:byte;
-    fh2:integer;
-    Entry:TPageTableEntry ;
-    f: textfile;
+var a,i,j,k:integer;
+var l,bb:byte;
+var fh2:integer;
+var Entry:TPageTableEntry ;
+var f: textfile;
 
 begin
 
@@ -1300,8 +1298,7 @@ end;
 
 procedure setpallette(pallette:TPallette; bank:integer);
 
-var
-    fh:integer;
+var fh:integer;
 
 begin
 systempallette[bank]:=pallette;
@@ -1340,9 +1337,10 @@ procedure cls(c:integer);
 // --- rev 20170111
 
 var
-    c2, i,l:integer;
+    i,l:integer;
     c3: cardinal;
-    screenstart:integer;
+var c2:integer;
+var screenstart:integer;
 
 begin
 c:=c mod 256;
@@ -1626,9 +1624,9 @@ procedure putchar(x,y:integer;ch:char;col:integer);
 // --- TODO: translate to asm, use system variables
 // --- rev 20170111
 var
-    i,j,start:integer;
+    i,j:integer;
   b:byte;
-
+var start:integer;
 begin
 for i:=0 to 15 do
   begin
@@ -1701,8 +1699,7 @@ end;
 
 procedure scrollup;
 
-var
-    i:integer;
+var i:integer;
 
 begin
   blit(displaystart,0,32,displaystart,0,0,xres,yres-32,xres,xres);

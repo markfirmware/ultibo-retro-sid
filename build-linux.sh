@@ -81,7 +81,7 @@ function test-qemu-target {
 }
 
 function build-ultibo-retro-sid {
-#   build-as QEMU . markfirmware/ultibo-retro-sid/circleci-2.0 Project1.pas
+    build-as QEMU . markfirmware/ultibo-retro-sid/circleci-2.0 Project1.pas
     build-as RPi3 . markfirmware/ultibo-retro-sid/circleci-2.0 Project1.pas
 }
 
