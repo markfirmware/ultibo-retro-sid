@@ -89,7 +89,7 @@ unit retromalina;
 
 interface
 
-uses sysutils,classes,unit6502,Platform,Framebuffer,keyboard,mouse,
+uses sysutils,classes,unit6502,Platform,Framebuffer,retrokeyboard,retromouse,
      threads,GlobalConst,ultibo,retro,simpleaudio;
 
 const base=          $2F000000;     // retromachine system area base

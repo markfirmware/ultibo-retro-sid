@@ -11,22 +11,23 @@ uses
   Threads,
   dos,
   Framebuffer,
-  BCM2837,
+  {$ifdef TARGET_RPI3}      BCM2837, BCM2710, {$endif}
+  {$ifdef TARGET_QEMUARM7A} QEMUVersatilePB, {$endif}
   SysUtils,
   Classes,
   MMC,         {Include the MMC/SD core to access our SD card}
   FileSystem,  {Include the file system core and interfaces}
   FATFS,       {Include the FAT file system driver}
-  BCM2710,
   Ultibo,
-  Keyboard,    {Keyboard uses USB so that will be included automatically}
-  Mouse,
+  RetroKeyboard,    {Keyboard uses USB so that will be included automatically}
+  RetroMouse,
   DWCOTG,
   retromalina,
  // cwindows,
   Unit6502,
   screen,
 //  mp3,
+  uQemuDiagnostics,
   simpleaudio;
 
 
@@ -325,7 +326,8 @@ end;
 //------------------- The main loop
 
 begin
-
+StartLogging;
+{$ifndef TARGET_QEMUARM7A}
 while not DirectoryExists('C:\') do
   begin
   Sleep(100);
@@ -358,6 +360,7 @@ if fileexists(drive+'kernel7_l.img') then
   end;
 
 for c:='C' to 'F' do drivetable[c]:=directoryexists(c+':\');
+{$endif}
 
 workdir:=drive;
 songtime:=0;
@@ -371,7 +374,9 @@ mousewheel:=128;
 
 
 initscreen;
+{$ifndef TARGET_QEMUARM7A}
 dirlist(drive);
+{$endif}
 threadsleep(1);
 ThreadSetCPU(ThreadGetCurrent,CPU_ID_0);
 threadsleep(1);
@@ -706,6 +711,8 @@ repeat
         end;
     end;
 
+  SaveFrameBuffer;
+  ProgramStop;
   until (mousek=3) or (key=key_escape) ;
   pauseaudio(1);
   if sfh>0 then fileclose(sfh);
@@ -714,4 +721,3 @@ repeat
   systemrestart(0);
 
 end.
-

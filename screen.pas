@@ -64,7 +64,7 @@ procedure writebmp;
 
 implementation
 
-uses mouse;
+uses retromouse;
 
 procedure rainbow;
 
