@@ -95,15 +95,10 @@ function build-lpr {
     mkdir -p $LPR_FOLDER/obj && \
     ultibo-bash fpc \
      -d$PLATFORM_SYMBOL \
-     -l- \
-     -v0ewn \
      -B \
      -Tultibo \
      -O2 \
      -Parm \
-     -Mdelphi \
-     -FuSource \
-     -Fugh/ultibohub/Asphyre/Source \
      -FE$LPR_FOLDER/obj \
      $TARGET_COMPILER_OPTIONS \
      @/root/ultibo/core/fpc/bin/$CFG_NAME \
