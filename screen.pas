@@ -498,7 +498,6 @@ procedure writebmp;
 
 var
     fh,i,j,k,idx:integer;
-var b:byte;
 
 begin
 

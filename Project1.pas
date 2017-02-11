@@ -36,7 +36,10 @@ var
     s,currentdir,currentdir2:string;
     sr:tsearchrec;
     filenames:array[0..1000,0..1] of string;
-    hh,mm,ss,l,i,j,ilf,ild:integer;
+{$ifndef TARGET_QEMUARM7A}
+    hh,mm,ss:integer;
+{$endif}
+    l,i,j,ilf,ild:integer;
     sel:integer=0;
     selstart:integer=0;
     nsel:integer;
@@ -49,12 +52,13 @@ var
     workdir:string;
     pause1a:boolean=true;
     drivetable:array['A'..'Z'] of boolean;
+{$ifndef TARGET_QEMUARM7A}
     c:char;
     f:textfile;
+{$endif}
     drive:string;
     key:integer;
     wheel:integer;
-var t,tt,ttt:int64;
 
     mousedebug:boolean=false;
 
@@ -66,7 +70,6 @@ label p999;
 
 var
     i,k:integer;
-var s:string;
     head_datasize:int64;
     samplenum:int64;
     currentdatasize:int64;

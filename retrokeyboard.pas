@@ -4652,7 +4652,6 @@ function USBKeyboardCheckPressed(Keyboard:PUSBKeyboardDevice;ScanCode:Byte):Bool
 {Note: Caller must hold the keyboard lock}
 var
  Count:Integer;
-var i:Integer;
 begin
  {}
  Result:=True;

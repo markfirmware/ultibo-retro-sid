@@ -469,9 +469,6 @@ end;
 
 procedure TMouse.Execute;
 
-var mb:tmousedata;
-var i:integer;
-var mi:cardinal;
 var
     x,y,w:integer;
     m:TMouseReport;
@@ -784,7 +781,6 @@ procedure TRetro.Execute;
 
 // --- rev 21070111
 
-var id:integer;
 
 begin
 ThreadSetCPU(ThreadGetCurrent,CPU_ID_3);
@@ -845,11 +841,6 @@ procedure initmachine;
 
 // -- rev 20170111
 
-var a,i,j,k:integer;
-var l,bb:byte;
-var fh2:integer;
-var Entry:TPageTableEntry ;
-var f: textfile;
 
 begin
 
@@ -1298,7 +1289,6 @@ end;
 
 procedure setpallette(pallette:TPallette; bank:integer);
 
-var fh:integer;
 
 begin
 systempallette[bank]:=pallette;
@@ -1339,8 +1329,6 @@ procedure cls(c:integer);
 var
     i,l:integer;
     c3: cardinal;
-var c2:integer;
-var screenstart:integer;
 
 begin
 c:=c mod 256;
@@ -1626,7 +1614,6 @@ procedure putchar(x,y:integer;ch:char;col:integer);
 var
     i,j:integer;
   b:byte;
-var start:integer;
 begin
 for i:=0 to 15 do
   begin
@@ -1699,7 +1686,6 @@ end;
 
 procedure scrollup;
 
-var i:integer;
 
 begin
   blit(displaystart,0,32,displaystart,0,0,xres,yres-32,xres,xres);

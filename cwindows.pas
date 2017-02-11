@@ -421,7 +421,6 @@ label p999;
 
 var
     mmx,mmy,mx,my:integer;
-var i,j:integer;
 
 
 begin
@@ -463,7 +462,6 @@ label p999;
 
 var
     mmx,mmy,mx,my:integer;
-var i,j:integer;
 
 
 begin
@@ -674,7 +672,6 @@ procedure cwindow.box3(ax,ay,al,ah,ac:integer);
 var
     i,j:integer;
      adr:^integer;
-var a:integer;
 
 begin
 adr:=foreground;
@@ -750,7 +747,6 @@ var
     i,j:integer;
     s:string;
     d:char;
-var oldmode,ll:integer;
 
 begin
 currentdir2:=adir;
@@ -1177,7 +1173,6 @@ end;
 
 procedure cbutton.highlight;
 
-var c:integer;
 
 begin
 if visible and not highlighted then begin
@@ -1261,7 +1256,6 @@ procedure cbutton.select;
 
 var
     temp:cbutton;
-var c:integer;
 
 begin
 if visible and not selected then begin

@@ -248,7 +248,6 @@ var
     oldpc,ea,reladdr,value,aresult:word;
     opcode:byte;
     penaltyop,penaltyaddr:byte;
-var csa,dsa,csi,dsi:integer;
  //   cs,ds:^integer;
 
 
